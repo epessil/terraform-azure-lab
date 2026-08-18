@@ -1,28 +1,30 @@
-# Terraform + Azure — Lab de Infraestructura como Código
+# Terraform + Azure — Infrastructure as Code lab
 
-Laboratorio de la Semana 15 de mi plan de transición a SRE: provisión de
-infraestructura Azure 100% declarativa con Terraform.
+Week 15 lab from my transition-to-SRE plan: 100% declarative Azure
+infrastructure provisioning with Terraform.
 
-## Qué construye
+## What it builds
 
-- Resource Group en `brazilsouth`
-- Storage Account con nombre único global (sufijo aleatorio vía provider `random`)
+- Resource Group in `brazilsouth`
+- Storage Account with a globally unique name (random suffix via the
+  `random` provider)
 
-## Conceptos aplicados
+## Concepts applied
 
-- Ciclo completo IaC: `init` → `plan` → `apply` → `destroy`
-- Variables y outputs en archivos separados (patrón código/secretos:
-  `tfvars` y `tfstate` excluidos vía .gitignore)
-- Dependencias implícitas: el grafo ordena creación y destrucción
-- Infraestructura efímera: el ambiente se destruye al cierre de cada
-  sesión y se regenera con un comando (FinOps: costo del lab ≈ $0)
+- Full IaC cycle: `init` → `plan` → `apply` → `destroy`
+- Variables and outputs in separate files (code/secrets pattern:
+  `tfvars` and `tfstate` excluded via .gitignore)
+- Implicit dependencies: the graph orders creation and destruction
+- Ephemeral infrastructure: the environment is destroyed at the end of
+  each session and regenerated with a single command (FinOps: lab
+  cost ≈ $0)
 
-## Uso
+## Usage
 
 ​```bash
 az login --use-device-code
 terraform init
 terraform plan
-terraform apply   # crea terraform.tfvars con tu subscription_id primero
-terraform destroy # al terminar: nada queda facturando
+terraform apply   # creates terraform.tfvars with your subscription_id first
+terraform destroy # when done: nothing keeps billing
 ​```
