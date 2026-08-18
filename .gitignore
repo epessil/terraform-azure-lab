@@ -1,0 +1,9 @@
+# Estado de Terraform — contiene TODO en texto plano (IDs, atributos, secretos)
+*.tfstate
+*.tfstate.*
+
+# Mis valores concretos — contiene el subscription_id
+*.tfvars
+
+# El provider descargado — pesa mucho y se regenera con terraform init
+.terraform/
