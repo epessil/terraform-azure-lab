@@ -15,6 +15,12 @@ provider "azurerm" {
 resource "azurerm_resource_group" "lab" {
   name     = var.rg_name
   location = var.location
+  tags = {
+    proyecto = "transicion-sre"
+    semana   = "15"
+    ambiente = "lab"
+    gestion  = "terraform"
+  }
 }
 
 resource "random_string" "sufijo" {
@@ -29,4 +35,10 @@ resource "azurerm_storage_account" "lab" {
   location                 = azurerm_resource_group.lab.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  tags = {
+    proyecto = "transicion-sre"
+    semana   = "15"
+    ambiente = "lab"
+    gestion  = "terraform"
+  }
 }
